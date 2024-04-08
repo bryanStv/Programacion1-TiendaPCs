@@ -82,6 +82,22 @@ public class OrdenadorRepositoryImpl implements IRepository<Ordenador>{
         return ordenadores;
     }
 
+    public Ordenador findByModelo(String modelo) throws SQLException{
+        Ordenador ordenador = null;
+        PreparedStatement st = con.prepareStatement("SELECT * FROM ordenadores WHERE modelo = ? ");
+        st.setString(1, modelo);
+
+        ResultSet rs = st.executeQuery();
+
+        //Si la consulta devuelve algún resultado ...
+        if (rs.next()){
+            // ... lo mapeamos a un objeto Post
+            ordenador = bdToEntity(rs);
+        }
+        //Devolvemos el Post ya mapeado
+        return ordenador;
+    }
+
     @Override
     public void save(Ordenador entity) throws SQLException {
         /*ResultSet rs;

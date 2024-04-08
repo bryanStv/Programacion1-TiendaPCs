@@ -33,4 +33,12 @@ public class Main {
                 break;
         }
     }
+
+    private static void comprar() throws SQLException {
+        Scanner tc = new Scanner(System.in);
+        System.out.println("¿Te interesa comprar alguno de estos PCs(Escribe el modelo)? ");
+        String modelo = tc.nextLine();
+        Ordenador ordenadorAcomprar = ordenadorRepository.findByModelo(modelo);
+        System.out.println("OrdenadorAcomprar: "+ordenadorAcomprar.toString());
+    }
 }
