@@ -3,9 +3,9 @@ public class Ordenador{
     private int id;
     private String modelo;
     private float precio;
-    private boolean portatil;
+    private int portatil;
 
-    public Ordenador(int id, String modelo, float precio, boolean portatil) {
+    public Ordenador(int id, String modelo, float precio, int portatil) {
         this.id = id;
         this.modelo = modelo;
         this.precio = precio;
@@ -36,24 +36,24 @@ public class Ordenador{
         this.precio = precio;
     }
 
-    public boolean isPortatil() {
+    public int isPortatil() {
         return portatil;
     }
 
-    public void setPortatil(boolean portatil) {
+    public void setPortatil(int portatil) {
         this.portatil = portatil;
     }
 
     @Override
     public String toString() {
-        if(portatil){
+        if(portatil==1){
             return "Ordenador Portatil{" +
-                    ", modelo='" + modelo + '\'' +
+                    "modelo='" + modelo + '\'' +
                     ", precio=" + precio +
                     '}';
         }else{
             return "Ordenador de Sobremesa{" +
-                    ", modelo='" + modelo + '\'' +
+                    "modelo='" + modelo + '\'' +
                     ", precio=" + precio +
                     '}';
         }
