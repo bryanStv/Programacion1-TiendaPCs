@@ -4,7 +4,11 @@ public class Ordenador{
     private String modelo;
     private float precio;
     private int portatil;
-
+    public Ordenador(String modelo, float precio, int portatil) {
+        this.modelo = modelo;
+        this.precio = precio;
+        this.portatil = portatil;
+    }
     public Ordenador(int id, String modelo, float precio, int portatil) {
         this.id = id;
         this.modelo = modelo;
@@ -46,16 +50,18 @@ public class Ordenador{
 
     @Override
     public String toString() {
+        String ANSI_YELLOW = "\u001B[33m";
+        String ANSI_RESET = "\u001B[0m";
         if(portatil==1){
-            return "Ordenador Portatil{" +
-                    "modelo='" + modelo + '\'' +
-                    ", precio=" + precio +
-                    '}';
+            return ANSI_YELLOW+"Ordenador Portatil"+
+                    "\n\t id = "+ id+
+                    "\n\t modelo = " + modelo+
+                    "\n\t precio = " + precio + "€ "+ANSI_RESET;
         }else{
-            return "Ordenador de Sobremesa{" +
-                    "modelo='" + modelo + '\'' +
-                    ", precio=" + precio +
-                    '}';
+            return ANSI_YELLOW+"Ordenador de Sobremesa" +
+                    "\n\t id = "+ id+
+                    "\n\t modelo = " + modelo+
+                    "\n\t precio = " + precio + "€ "+ANSI_RESET;
         }
     }
 }

@@ -11,7 +11,7 @@ public class OrdenadorRepositoryImpl implements IRepository<Ordenador>{
     }
     @Override
     public Ordenador bdToEntity(ResultSet rs) throws SQLException {
-        return new Ordenador(rs.getInt("id"), rs.getString("modelo"),rs.getInt("precio"),rs.getInt("portatil"));
+        return new Ordenador(rs.getInt("id"), rs.getString("modelo"),rs.getFloat("precio"),rs.getInt("portatil"));
     }
     @Override
     public List<Ordenador> findAll() throws SQLException {
@@ -100,29 +100,13 @@ public class OrdenadorRepositoryImpl implements IRepository<Ordenador>{
 
     @Override
     public void save(Ordenador entity) throws SQLException {
-        /*ResultSet rs;
         PreparedStatement st = null;
-        if (entity.getId() == -1){
-            String query = "INSERT INTO ordenadores (id, modelo, precio, portatil) VALUES (?, ?, ?, ?)";
-            //Fijáos en Statement.RETURN_GENERATED_KEYS. Permite recuperar el campo ID autogenerado por MySql
-            st = con.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
-
-            st.setString(1, entity.getId());
-            st.setDate(2, comment.getDate());
-            st.setInt(3, comment.getUser().getId());
-            st.setInt(4, comment.getPost().getId());
-
-            st.executeUpdate();
-
-            //Recuperar el id autogenerado
-            rs = st.getGeneratedKeys();
-            //Este ResultSet solo puede contener un registro: el ID autogenerado
-
-            if (rs.next()){
-                //Ahora ya sabemos cuál es el nuevo id del Usuario
-                comment.setId(rs.getInt(1));
-            }
-        }*/
+        String query = "INSERT INTO ordenadores(modelo,precio,portatil) VALUES(?,?,?)";
+        st = con.prepareStatement(query);
+        st.setString(1,entity.getModelo());
+        st.setFloat(2,entity.getPrecio());
+        st.setInt(3,entity.isPortatil());
+        st.executeUpdate();
     }
 
     @Override
